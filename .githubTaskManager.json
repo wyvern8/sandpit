@@ -5,22 +5,21 @@
         "executor": "Ping",
         "context": "diagnostic",
         "options": {
-          "count": 422
-        }
-      },
-      {
-        "executor": "Docker",
-        "context": "localAgent",
-        "options": {
-          "image": "alpine",
-          "command": ["/bin/ls", "-ltr", "/bin"]
+          "count": 3
         }
       },
       {
         "executor": "Jenkins",
         "context": "functional",
         "options": {
-          "tags": ["@cactus"]
+          "tags": ["@cactus", "@##GHPRNUM##"]
+        }
+      },
+      {
+        "executor": "Jenkins",
+        "context": "a11y",
+        "options": {
+          "tags": ["@cactus", "@a11y"]
         }
       }
     ]
