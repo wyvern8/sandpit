@@ -1,22 +1,7 @@
 {
   "pull_request": {
-    "agentGroup": "AV3",
+    "agentGroup": "Neko",
     "tasks": [
-      {
-        "executor": "Ping",
-        "context": "diagnostic",
-        "options": {
-          "count": 4
-        }
-      },
-      {
-        "executor": "Docker",
-        "context": "localAgent",
-        "options": {
-          "image": "alpine",
-          "command": ["/bin/ls", "-ltr", "/bin"]
-        }
-      },
       {
         "executor": "Http",
         "context": "avtest",
@@ -29,13 +14,34 @@
                 "name": "accept",
                 "value": "application/json"
               }  
-            ]  
+            ]
           },
           "validator": {
             "type": "bodyJson",
             "objectCheckRef": "headers.Host",
             "objectCheckVal": "httpbin.org"
           }  
+        }
+      },
+      {
+        "executor": "Jenkins",
+        "context": "functional",
+        "options": {
+          "tags": ["@nekoagent", "@smoketests", "@##GHREPONAME##"]
+        }
+      },
+      {
+        "executor": "Jenkins",
+        "context": "a11y",
+        "options": {
+          "tags": ["@a11y", "@##GHREPONAME##"]
+        }
+      },
+      {
+        "executor": "Jenkins",
+        "context": "Intentionally Missing",
+        "options": {
+          "tags": ["None"]
         }
       }
     ]
