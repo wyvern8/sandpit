@@ -1,54 +1,72 @@
 {
-    "pull_request": {
+  "pull_request": {
+    "av": "abs223fsddsesc",
+    "agentGroup": "av",
+    "tasks": [
+      {
+        "executor": "Docker",
+        "context": "run ls in latest alpine1a",
+        "options": {
+          "image": "alpine:latest",
+          "command": [
+            "/bin/ls",
+            "-ltra",
+            "/bin/ls"
+          ]
+        },
         "tasks": [
-            {
-                "executor": "Jenkins",
-                "context": "functional",
-                "options": {
-                    "tags": [
-                        "@moat",
-                        "@hashyhashy",
-                        "@##GHREPONAME##"
-                    ]
-                },
-                "tasks": [
-                    {
-                        "executor": "Jenkins",
-                        "context": "a11y",
-                        "options": {
-                            "tags": [
-                                "@nested",
-                                "@maybeadeploy",
-                                "@##GHREPONAME##"
-                            ]
-                        },
-                        "tasks": [
-                            {
-                                "executor": "Jenkins",
-                                "context": "intentionally_missing",
-                                "options": {
-                                    "tags": [
-                                        "@nestedagain",
-                                        "@maybeadeploy",
-                                        "@##GHREPONAME##"
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "executor": "Jenkins",
-                "context": "a11y",
-                "options": {
-                    "tags": [
-                        "@a11y-update",
-                        "@##GHREPONAME##",
-                        "@Tenon2"
-                    ]
-                }
+          {
+            "executor": "Docker",
+            "context": "run ls in latest alpine2a",
+            "options": {
+              "image": "alpine:latest",
+              "command": [
+                "/bin/ls",
+                "-ltra",
+                "/bin/ls"
+              ]
             }
+          },
+          {
+            "executor": "Docker",
+            "context": "run ls in latest alpine2b",
+            "options": {
+              "image": "alpine:latest",
+              "command": [
+                "/bin/ls",
+                "-ltra",
+                "/bin/ls"
+              ]
+            },
+            "tasks": [
+              {
+                "executor": "Docker",
+                "context": "run ls in latest alpine3",
+                "options": {
+                  "image": "alpine:latest",
+                  "command": [
+                    "/bin/ls",
+                    "-ltra",
+                    "/bin/ls"
+                  ]
+                }
+              }
+            ]
+          }
         ]
-    }
+      },
+      {
+        "executor": "Docker",
+        "context": "run ls in latest alpine1b",
+        "options": {
+          "image": "alpine:latest",
+          "command": [
+            "/bin/ls",
+            "-ltra",
+            "/bin/ls"
+          ]
+        }
+      }
+    ]
+  }
 }
