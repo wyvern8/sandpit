@@ -1,15 +1,56 @@
 {
-  "pull_request": {
-    "agentGroup": "AV",
-    "tasks": [
-      {
-         "executor": "Docker",
-         "context": "run ls in latest alpine",
-         "options": {
-           "image": "alpine:latest",
-           "command": ["/bin/ls", "-ltra", "/bin"]
-         }
-       }
-    ]
-  }  
+    "pull_request": {
+        "tasks": [
+            {
+                "executor": "Jenkins",
+                "context": "functional",
+                "options": {
+                    "tags": [
+                        "@hello",
+                        "@moat",
+                        "@##GHREPONAME##"
+                    ]
+                },
+                "tasks": [
+                    {
+                        "executor": "Jenkins",
+                        "context": "a11y",
+                        "options": {
+                            "tags": [
+                                "@nested",
+                                "@maybeadeploy",
+                                "@##GHREPONAME##",
+                                "@##PARENT.BUILDNUMBER##"
+                            ]
+                        },
+                        "tasks": [
+                            {
+                                "executor": "Jenkins",
+                                "context": "intentionally_missing",
+                                "options": {
+                                    "tags": [
+                                        "@nestedagain",
+                                        "@lessmoats",
+                                        "@##GHREPONAME##",
+                                        "@##PARENT.BUILDNUMBER##"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "executor": "Jenkins",
+                "context": "a11y",
+                "options": {
+                    "tags": [
+                        "@a11y-yy",
+                        "@##GHREPONAME##",
+                        "@Tenon2"
+                    ]
+                }
+            }
+        ]
+    }
 }
