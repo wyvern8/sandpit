@@ -1,15 +1,30 @@
 {
   "pull_request": {
-    "agentGroup": "AV",
     "tasks": [
       {
-         "executor": "Docker",
-         "context": "run ls in latest alpine",
-         "options": {
-           "image": "alpine:latest",
-           "command": ["/bin/ls", "-ltra", "/bin"]
-         }
-       }
+        "executor": "Jenkins",
+        "context": "Generic Job",
+        "options": {
+          "jobName": "EXECUTE_AUTOMATED_TESTS",
+          "parameters": {
+            "TAGS": "['@meep', '@##GHREPONAME##']",
+            "ENVIRONMENT": "meep-env"
+          }
+        },
+        "tasks": [
+          {
+            "executor": "Jenkins",
+            "context": "Generic Job",
+            "options": {
+              "jobName": "EXECUTE_AUTOMATED_TESTS",
+              "parameters": {
+                "TAGS": "['@child-task', '@parent-##PARENTBUILDNUMBER##']",
+                "ENVIRONMENT": "child-env"
+              }
+            }
+          }
+        ]
+      }
     ]
   }  
 }
