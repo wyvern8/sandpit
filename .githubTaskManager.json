@@ -1,8 +1,8 @@
 
 {
   "pull_request": {
-    "av": "sssaaiawwzsdfs",
-    "agentGroup": "av",
+    "av": "fddfdfd",
+    "agentGroup": "K8S",
     "tasks": [
       {        
         "executor": "Docker",
@@ -33,7 +33,7 @@
             "executor": "Docker",
             "context": "run ls in latest alpine2b",
             "options": {
-              "image": "alpine:latest",
+              "image": "malpine:latest",
               "command": [
                 "/bin/ls",
                 "-ltra",
