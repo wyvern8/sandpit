@@ -1,4 +1,3 @@
-
 {
   "pull_request": {
     "av": "fjsskdmsd",
@@ -25,11 +24,11 @@
           }
         }
       },
-      {        
+      {
         "executor": "DockerSonarPullRequest",
         "context": "Sonar test",
         "options": {
-          "BUILD_TYPE": "nodejs" 
+          "BUILD_TYPE": "nodejs"
         },
         "tasks": [
           {
@@ -41,7 +40,7 @@
             }
           }
         ]
-      ]
-   }    
+      }
+    ]
+  }
 }
-
