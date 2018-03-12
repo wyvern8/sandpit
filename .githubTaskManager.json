@@ -28,7 +28,7 @@
         "executor": "Sonar",
         "context": "Sonar test",
         "options": {
-          "BUILD_TYPE": "nodejs"
+           "env": {"BUILD_TYPE": "nodejs"}
         },
         "tasks": [
           {
