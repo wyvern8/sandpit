@@ -95,6 +95,13 @@
             "/bin/ls"
           ]
         }
+      },
+      {
+        "executor": "Jenkins",
+        "context": "functional",
+        "options": {
+          "tags": ["@cactus"]
+        }
       }
     ]
   }
