@@ -1,11 +1,12 @@
 {
   "pull_request": {
+    "agentGroup": "AV2",
     "tasks": [
       {
         "executor": "Ping",
         "context": "diagnostic",
         "options": {
-          "count": 4293
+          "count": 10
         }
       },
       {
