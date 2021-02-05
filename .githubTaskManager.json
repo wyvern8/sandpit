@@ -1,7 +1,8 @@
 
 {
   "pull_request": {
-    "av": "fdgdddddsfd",
+    "disableComments": true,
+    "av": "fdgdvvvssbdddsfd",
     "agentGroup": "av",
     "tasks": [
       {        
@@ -17,19 +18,20 @@
         },
         "tasks": [
           {
+            "disableComments": false,
             "executor": "Docker",
             "context": "run ls in latest alpine2a",
             "options": {
               "image": "alpine:latest",
               "command": [
-                "/bin/ls",
+                "/bifn/ls",
                 "-ltra",
                 "/bin/ls"
               ]
             }
           },
           {
-            "disabled": false,
+            "disabled": true,
             "executor": "Docker",
             "context": "run ls in latest alpine2b",
             "options": {
